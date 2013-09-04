@@ -36,7 +36,7 @@ public class ImEzClientChatJFrame extends JFrame {
 	private ImEzClient imEzClient;
 	private BackGroundImageJPanel leftJPanel, centerJPanel, rightJPanel;
 	private JTextField userInPutJTextField;
-	private JTextArea textArea;
+	private JTextArea jTextArea;
 	private String userName;
 	private JList chatReadyJList, chatBuddiesJList;
 	private Image backGroundImage;
@@ -69,7 +69,7 @@ public class ImEzClientChatJFrame extends JFrame {
 	private void setupJComponents(ImEzClintChatFrameMouseAdapter imEzClintChatFrameMouseAdapter) {
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 		Font userInPutJTextFieldFont = new Font("Dialog", Font.BOLD, 29);
-		Font textAreaFont = new Font("Dialog", Font.BOLD, 22);
+		Font jTextAreaFont = new Font("Dialog", Font.BOLD, 22);
 		Color backGroundColor = new Color(.8f, .8f, .8f, 1);
 		
 		userInPutJTextField = new JTextField();
@@ -83,15 +83,15 @@ public class ImEzClientChatJFrame extends JFrame {
 		userInPutJTextField.addActionListener(new ImEzClientChatFrameActionListener());
 		userInPutJTextField.setBorder(border);
 		
-		textArea = new JTextArea();
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		textArea.setEditable(false);
-		textArea.setBorder(border);
-		textArea.setFont(textAreaFont);
-		textArea.setOpaque(true);//-  -  -- - - - - - - - -- - - -- - - - - -- -- -  -- - - - - -
-		textArea.setBackground(backGroundColor);
-		centerJPanel.add(textArea);
+		jTextArea = new JTextArea();
+		jTextArea.setWrapStyleWord(true);
+		jTextArea.setLineWrap(true);
+		jTextArea.setEditable(false);
+		jTextArea.setBorder(border);
+		jTextArea.setFont(jTextAreaFont);
+		jTextArea.setOpaque(true);
+		jTextArea.setBackground(backGroundColor);
+		centerJPanel.add(jTextArea);
 
 		chatReadyJList = new JList();
 		rightJPanel.add(chatReadyJList);
@@ -129,7 +129,7 @@ public class ImEzClientChatJFrame extends JFrame {
 		int rightWidthInt = (int) rightJPanel.getBounds().getWidth();
 		int rightHeightInt = (int) rightJPanel.getBounds().getHeight() - insets.top;
 
-		textArea.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.15),(int)(centerWidthInt*.90),(int) (centerHeightInt*.65));
+		jTextArea.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.15),(int)(centerWidthInt*.90),(int) (centerHeightInt*.65));
 		userInPutJTextField.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.80),(int)( centerWidthInt*.90),(int) (centerHeightInt*.15));
 		chatReadyJList.setBounds((int) (leftWidthInt * .05), (int) (leftHeightInt * .15),(int) (leftWidthInt * .90), (int) (leftHeightInt * .80));
 		chatBuddiesJList.setBounds((int) (rightWidthInt * .05), (int) (rightHeightInt * .15),(int) (rightWidthInt * .90), (int) (rightHeightInt * .80));
@@ -174,11 +174,11 @@ public class ImEzClientChatJFrame extends JFrame {
 	}
 
 	public JTextArea getTextArea() {
-		return textArea;
+		return jTextArea;
 	}
 
 	public void setTextArea(JTextArea textArea) {
-		this.textArea = textArea;
+		this.jTextArea = textArea;
 	}
 
 	class ImEzClientChatFrameActionListener implements ActionListener {
@@ -187,8 +187,8 @@ public class ImEzClientChatJFrame extends JFrame {
 			if (e.getSource().equals(userInPutJTextField)) {
 				String buffer = userInPutJTextField.getText();
 				netWorkObject.sendText(buffer);
-				textArea.setText("You(" + userName + ") " + userInPutJTextField.getText() + "\n"
-						+ textArea.getText());
+				jTextArea.setText("You(" + userName + ") " + userInPutJTextField.getText() + "\n"
+						+ jTextArea.getText());
 				userInPutJTextField.setText("");
 			}
 		}
