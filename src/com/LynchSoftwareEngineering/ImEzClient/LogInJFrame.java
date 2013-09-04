@@ -166,11 +166,11 @@ public class LogInJPanel extends JPanel{
 		public void actionPerformed(ActionEvent arg0) {
 			if(arg0.getSource().equals(logInJButton)){
 				String userName = userNameJTextField.getText();
-				netWorkObject.checkCurrentUserNameAndPassWord(userName, ""+userJPasswordFeild.getPassword());
+				netWorkObject.checkCurrentUserNameAndPassWord(userName, ""+userJPasswordFeild.getText());
 				netWorkObject.getImEzClient().setUserName(userName);// user name changed
 			}else if (arg0.getSource().equals(newUserJButton)){
 				String userName = newUserJTextField.getText();
-				netWorkObject.checkNewUser(userName, ""+newUserJPassword.getPassword());
+				netWorkObject.checkNewUser(userName, ""+newUserJPassword.getText());
 				netWorkObject.getImEzClient().setUserName(userName);// user name changed
 			}
 		}

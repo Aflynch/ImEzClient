@@ -2,6 +2,7 @@ package com.LynchSoftwareEngineering.ImEzClient;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -23,13 +24,11 @@ public class NetWorkObject {
 	private ArrayList<String> chatReadyUsersArrayList;
 	private ClientSideConnectoinValidatorThread clientSideConnectoinValidatorThread;
 
-	/**
-	 * @param args
-	 */
+
 	public NetWorkObject(ImEzClient imEzClient) {	
 		this.imEzClient = imEzClient;
 		try {
-			Socket socket = new Socket("johnny-be-good.net", 9902); // "localhost" or "54.244.116.111"
+			Socket socket = new Socket( "johnny-be-good.net",  9902); // "localhost" or "johnny-be-good.net"
 			timeStampBufferedWriter = new TimeStampBufferedWriter (new OutputStreamWriter(socket.getOutputStream()));
 			socketInListener = new SocketInListener(socket, this);
 			chatReadyUsersArrayList = new ArrayList<String>();
