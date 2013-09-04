@@ -1,5 +1,6 @@
 package com.LynchSoftwareEngineering.ImEzClient;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
@@ -67,11 +68,18 @@ public class ImEzClientChatJFrame extends JFrame {
 
 	private void setupJComponents(ImEzClintChatFrameMouseAdapter imEzClintChatFrameMouseAdapter) {
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		Font userInPutJTextFieldFont = new Font("Dialog", Font.BOLD, 29);
+		Font textAreaFont = new Font("Dialog", Font.BOLD, 22);
+		Color backGroundColor = new Color(.8f, .8f, .8f, 1);
+		
 		userInPutJTextField = new JTextField();
 		userInPutJTextField.setText("Say hi");
+		userInPutJTextField.setFont(userInPutJTextFieldFont);
+				
+		userInPutJTextField.setBackground(backGroundColor);
 		centerJPanel.add(userInPutJTextField);
 		
-		userInPutJTextField.setSelectedTextColor(Color.RED);
+		userInPutJTextField.setSelectedTextColor(Color.WHITE);
 		userInPutJTextField.addActionListener(new ImEzClientChatFrameActionListener());
 		userInPutJTextField.setBorder(border);
 		
@@ -80,6 +88,9 @@ public class ImEzClientChatJFrame extends JFrame {
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
 		textArea.setBorder(border);
+		textArea.setFont(textAreaFont);
+		textArea.setOpaque(true);//-  -  -- - - - - - - - -- - - -- - - - - -- -- -  -- - - - - -
+		textArea.setBackground(backGroundColor);
 		centerJPanel.add(textArea);
 
 		chatReadyJList = new JList();
@@ -118,8 +129,8 @@ public class ImEzClientChatJFrame extends JFrame {
 		int rightWidthInt = (int) rightJPanel.getBounds().getWidth();
 		int rightHeightInt = (int) rightJPanel.getBounds().getHeight() - insets.top;
 
-		textArea.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.15),(int)(centerWidthInt*.90),(int) (centerHeightInt*.75));
-		userInPutJTextField.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.93),(int)( centerWidthInt*.90),(int) (centerHeightInt*.06));
+		textArea.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.15),(int)(centerWidthInt*.90),(int) (centerHeightInt*.65));
+		userInPutJTextField.setBounds((int)(centerWidthInt*.05), (int)(centerHeightInt*.80),(int)( centerWidthInt*.90),(int) (centerHeightInt*.15));
 		chatReadyJList.setBounds((int) (leftWidthInt * .05), (int) (leftHeightInt * .15),(int) (leftWidthInt * .90), (int) (leftHeightInt * .80));
 		chatBuddiesJList.setBounds((int) (rightWidthInt * .05), (int) (rightHeightInt * .15),(int) (rightWidthInt * .90), (int) (rightHeightInt * .80));
 	}
